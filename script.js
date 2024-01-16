@@ -2,6 +2,27 @@ let firstNum = 0;
 let operator = '';
 let secondNum = 0;
 
+/*screen*/
+const screenCurrent = document.querySelector('#screenCurrent')
+const screenLast = document.querySelector('#screenLast')
+/*screen*/
+
+/*numButtons*/
+const numButtons = document.querySelectorAll('.numButtons');
+numButtons.forEach(button => {
+    button.addEventListener('click',()=>{
+        if (screenCurrent.textContent == '0' && button.textContent != '.'){
+            screenCurrent.textContent = button.textContent;
+        } else if (isDotInScreen() && button.textContent == '.' ){
+            return;
+        } else {{screenCurrent.textContent += button.textContent;}}  
+    })
+})
+function isDotInScreen(){
+    return screenCurrent.textContent.split('').includes('.');
+}
+/*numButtons*/
+
 function sum(a, b) {
     return a + b;
 }
