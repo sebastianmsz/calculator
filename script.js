@@ -15,13 +15,33 @@ numButtons.forEach(button => {
             screenCurrent.textContent = button.textContent;
         } else if (isDotInScreen() && button.textContent == '.' ){
             return;
-        } else {{screenCurrent.textContent += button.textContent;}}  
+        } else {{screenCurrent.textContent += button.textContent}}
     })
 })
 function isDotInScreen(){
     return screenCurrent.textContent.split('').includes('.');
 }
 /*numButtons*/
+
+/*DeleteClearButtons*/
+const clearButton = document.querySelector('#clearButton');
+const deleteButton = document.querySelector('#deleteButton');
+
+deleteButton.addEventListener('click', ()=>{
+    let screenCurrentList = screenCurrent.textContent.split('');
+    console.log(screenCurrentList);
+    if (screenCurrentList.length == 1){
+        clearButton.dispatchEvent(new Event('click'))
+    } else {screenCurrent.textContent = screenCurrentList.slice(0, -1).join('');}
+})
+
+clearButton.addEventListener('click', ()=>{
+    screenCurrent.textContent = '0';
+    firstNum = 0;
+    operator = '';
+    secondNum = 0;
+})
+/*DeleteClearButtons*/
 
 function sum(a, b) {
     return a + b;
